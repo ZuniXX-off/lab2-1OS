@@ -143,10 +143,12 @@
     <ClCompile Include="lab2_OS.cpp" />
     <ClCompile Include="infoFuncs.cpp" />
     <ClCompile Include="memoryFuncs.cpp" />
+    <ClCompile Include="menuFuncs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="infoFuncs.h" />
     <ClInclude Include="memoryFuncs.h" />
+    <ClInclude Include="menuFuncs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -24,12 +24,18 @@
     <ClCompile Include="memoryFuncs.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="menuFuncs.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="infoFuncs.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="memoryFuncs.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="menuFuncs.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
