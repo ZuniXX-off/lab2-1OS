@@ -133,3 +133,64 @@ void ReadDataFromRegion() {
 	myData.assign((char*)address, sysInfo.dwPageSize);
 	std::cout << "Данные успешно прочитаны: " << std::endl << myData << std::endl;
 }
+
+DWORD ChooseProtect() {
+	char choice;
+	std::string vars = "1234567";
+	DWORD protectOptions[] = { PAGE_EXECUTE, PAGE_EXECUTE_READ, PAGE_EXECUTE_READWRITE, PAGE_NOACCESS, PAGE_READONLY, PAGE_READWRITE, PAGE_TARGETS_NO_UPDATE };
+	do {
+		std::cout << "Изменить основную константу защиты памяти на:"
+			<< std::endl << "1. Выполняемо"
+			<< std::endl << "2. Выполняемо или только для чтения"
+			<< std::endl << "3. Выполняемо, только для чтения или для копирования при записи" 
+			<< std::endl << "4. Недоступно" 
+			<< std::endl << "5. Только для чтения" 
+			<< std::endl << "6. Только для чтения или для чтения и записи" 
+			<< std::endl << "7. Необновляемо";
+		choice = _getch();
+		std::cout << std::endl << choice << std::endl;
+		if (vars.find(choice) == -1) {
+			std::cout << "Выбран несуществующий пункт меню, попробуйте снова" << std::endl;
+			system("pause");
+		}
+	} while (vars.find(choice) == -1);
+	return protectOptions[choice - 49];
+} 
+
+DWORD ChooseModProtect() {
+	char choice;
+	std::string vars = "1234";
+	DWORD protectOptions[] = { PAGE_GUARD, PAGE_NOCACHE, PAGE_WRITECOMBINE, 0x0};
+	do {
+		std::cout << "Изменить дополнительную константу защиты памяти на:"
+			<< std::endl << "1. Защищено"
+			<< std::endl << "2. Недоступно"
+			<< std::endl << "3. Объединенная запись"
+			<< std::endl << "4. Без доп константы";
+		choice = _getch();
+		std::cout << std::endl << choice << std::endl;
+		if (vars.find(choice) == -1) {
+			std::cout << "Выбран несуществующий пункт меню, попробуйте снова" << std::endl;
+			system("pause");
+		}
+	} while (vars.find(choice) == -1);
+	return protectOptions[choice - 49];
+}
+
+void SetVirtualProtect(DWORD protect, DWORD modProtect) {
+	SYSTEM_INFO sysInfo;
+	void* address;
+	DWORD newProtOpt = protect | modProtect, oldProtOpt = 0;
+	GetSystemInfo(&sysInfo);
+	std::cout << "Введите адрес начала региона: 0x";
+	std::cin >> address;
+	if (!VirtualProtect(address, sysInfo.dwPageSize, newProtOpt, &oldProtOpt)) {
+		std::cout << "Ошибка при изменении параметров, код: " << GetLastError() << std::endl;
+	}
+	else {
+		std::cout << "Параметры изменены успешно" << std::endl << "Старые параметры: ";
+		PrintMemProtect(oldProtOpt);
+		std::cout << std::endl << "Новые параметры: ";
+		PrintMemProtect(newProtOpt);
+	}
+}

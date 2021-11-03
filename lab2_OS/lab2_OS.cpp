@@ -1,10 +1,10 @@
 ﻿#include <iostream>
-#include "infoFuncs.h"
-#include "memoryFuncs.h"
+#include "menuFuncs.h"
+
 
 int main()
 {
     system("chcp 1251");
-    system("cls");
+    MainMenu();
 }
 
