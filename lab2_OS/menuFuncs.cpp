@@ -6,6 +6,7 @@ void MainMenu() {
 		system("cls");
 		PrintMainMenu();
 		menu = _getch();
+		system("cls");
 		switch (menu)
 		{
 		case '1':
@@ -39,6 +40,7 @@ void MainMenu() {
 			FreeAllocatedMemory();
 			system("pause");
 			break;
+		case '0': break;
 		default:
 			std::cout << "Выбран несуществующий пункт меню, попробуйте снова" << std::endl;
 			system("pause");
@@ -53,6 +55,7 @@ void AllocMenu() {
 		system("cls");
 		PrintAllocMenu();
 		menu = _getch();
+		system("cls");
 		switch (menu)
 		{
 		case '1':
@@ -71,6 +74,7 @@ void AllocMenu() {
 			AllocateMemory(0, 1);
 			system("pause");
 			break;
+		case '0': break;
 		default:
 			std::cout << "Выбран несуществующий пункт меню, попробуйте снова" << std::endl;
 			system("pause");

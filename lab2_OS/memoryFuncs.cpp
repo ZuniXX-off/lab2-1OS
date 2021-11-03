@@ -108,7 +108,7 @@ void FreeAllocatedMemory() {
 		std::cout << "Ошибка освобождения, код: " << GetLastError();
 	}
 	else {
-		std::cout << "Память освобождена успешно";
+		std::cout << "Память освобождена успешно" << std::endl;
 	}
 }
 
@@ -116,6 +116,7 @@ void WriteDataInRegion() {
 	LPVOID address;
 	std::string myData;
 	std::cout << "Введите данные: ";
+	std::cin.clear();
 	std::getline(std::cin, myData);
 	std::cout << "Введите адрес начала региона: 0x";
 	std::cin >> address;

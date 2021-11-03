@@ -31,7 +31,7 @@ void SystemInfo() {
 	std::cout << std::endl
 		<< "Количество процессоров в системе: " << sysInfo.dwNumberOfProcessors << std::endl
 		<< "Гранулярность для начального адреса, в котором может быть выделена виртуальная память: " << sysInfo.dwAllocationGranularity << std::endl
-		<< "Уровень архитектурно-зависимого прицессора системы: " << sysInfo.wProcessorLevel << std::endl
+		<< "Уровень архитектурно-зависимого процессора системы: " << sysInfo.wProcessorLevel << std::endl
 		<< "Ревизия архитектурно-зависимого процессора: " << sysInfo.wProcessorRevision << std::endl;
 }
 
